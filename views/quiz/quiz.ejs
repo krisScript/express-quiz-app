@@ -1,0 +1,43 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+  
+  <body>
+      <%- include('../includes/navigation.ejs') %>
+   <section class="section">
+     <div class="container has-text-centered">
+       <h1 class="title is-size-1"> New Quiz</h1>
+     </div>
+   </section>
+   <form >
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+   </form>
+   <section class="section">
+      
+            <% for (let question of questions) { %>
+              <form class="question-form">
+                  <div class="field">
+                    <p class="title is-size-4"><%= question.question %></p>
+                    <div class="control">
+                        <input type="text" name="correct_answer" hidden value="<%= question.correct_answer %>">
+                        <div>
+                            <% for (let answer of question.answers) { %>
+                              <label class="radio">
+                                  <input type="radio" name="question" value="<%= answer %>">
+                                  <%= answer %>
+                                </label>
+                        
+                          <% }%> 
+                        </div>
+                        
+                    </div>
+                  </div>
+              </form>
+               
+                <% }  %> 
+           
+       <div class="container has-text-centered">
+         <button class="button" id="submit-btn">Submit</button>
+       </div>
+   </section>
+
+    <%- include('../includes/end.ejs') %>
