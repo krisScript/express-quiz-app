@@ -1,5 +1,5 @@
 const getData = require('../util/getData');
-
+const User = require('../models/user')
 exports.getNewQuiz = async (req, res, next) => {
   const apiUrl = 'https://opentdb.com/api.php?amount=10&type=multiple';
   try {
@@ -54,7 +54,8 @@ exports.postQuizResults = async (req, res, next) => {
     })
     const correctAnswersNum = correctAnswers.length
     let incorrectAnswersNum = refinedResults.length - correctAnswersNum
-    await req.user.updateScore(correctAnswersNum)
+    const user  = await User.findOne({email:req.user.email})
+    await user.updateScore(correctAnswersNum)
     res.render('quiz/quiz-results', {
       user: req.user,
       title: 'Quiz Results',

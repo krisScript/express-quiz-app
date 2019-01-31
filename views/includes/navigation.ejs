@@ -17,7 +17,6 @@
       <a class="navbar-item  <%= path === '/' ? 'is-active' : '' %>" href="/">
         Home
       </a>
-
       <% if (user) { %>
       <a
         class="navbar-item <%= path === '/new-quiz' ? 'is-active' : '' %>"
@@ -26,6 +25,10 @@
         New Quiz
       </a>
       <% } %>
+      <a class="navbar-item  <%= path === '/leaderboard' ? 'is-active' : '' %>" href="/leaderboard">
+        Leaderboard
+      </a>
+
     </div>
 
     <div class="navbar-end">

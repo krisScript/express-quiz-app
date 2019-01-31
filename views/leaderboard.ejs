@@ -1,0 +1,33 @@
+<%- include('includes/head.ejs') %>
+    </head>
+  
+  <body>
+      <%- include('includes/navigation.ejs') %>
+   <section class="section">
+     <div class="container has-text-centered">
+       <h1 class="title is-size-1">Leaderboard</h1>
+     </div>
+     
+   </section>  <section class="section  ">
+    <div class="box has-text-centered">
+         <table class="table">
+                 <thead>
+                   <tr>
+                         <th>User</th>
+                         <th>Score</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                    <% for (let user of users) { %>
+                        <tr>
+                                <td><%= user.userName %></td>
+                                <td><%= user.quizScore %></td>
+                        </tr>
+                    <% }%> 
+                 </tbody>
+               </table>
+    </div>
+    
+</section>
+
+    <%- include('includes/end.ejs') %>

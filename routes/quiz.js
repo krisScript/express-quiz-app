@@ -14,8 +14,6 @@ body('number_questions',)
    const answers = Object.entries(req.body).filter(entry => {
            return typeof entry[1] === 'string' && entry[1] !== '' && entry[0] !== '_csrf' && entry[0] !== 'number_questions' && entry[0].split('-')[0] === 'answer'
        })
-
-       console.log(answers)
        if (number_questions.parseInt !== answers.length) {
         throw new Error('Plase answer all questions!');
       }

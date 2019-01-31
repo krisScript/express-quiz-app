@@ -17,6 +17,7 @@ const csrf = require('csurf');
 const authRouter = require('./routes/auth')
 const indexRouter = require('./routes/index')
 const quizRouter = require('./routes/quiz')
+const leaderboardRouter = require('./routes/leaderboard')
 const dbKey = require('./config/keys').mongoURI;
 mongoose
   .connect(
@@ -65,6 +66,7 @@ process.on('unhandledRejection', (reason, p) => {
 app.use(indexRouter)
 app.use(authRouter)
 app.use(quizRouter)
+app.use(leaderboardRouter)
 // app.use((error, req, res, next) => {
 //   res.status(404).redirect('/404');
 // });

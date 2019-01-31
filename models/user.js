@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+const userSchema = new Schema({
   userName: {
     type: String,
     required: true
@@ -15,15 +16,14 @@ const UserSchema = new mongoose.Schema({
   },
   quizScore: {
     type: Number,
-    default: 0
+    default: 0,
   }
 });
-UserSchema.methods.updateScore = newScore => {
+userSchema.methods.updateScore  = function(newScore){
   if (newScore > this.quizScore) {
     this.quizScore = newScore;
     return this.save();
   }
 };
-const User = mongoose.model('User', UserSchema);
 
-module.exports = User;
+module.exports =  mongoose.model('User', userSchema);
