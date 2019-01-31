@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../models/user');
-
 exports.getSignUp = (req, res, next) => {
   res.render('auth/signup-login', {
     user: req.user,
@@ -20,9 +19,7 @@ exports.getSignUp = (req, res, next) => {
 };
 exports.postSignUp = async (req, res, next) => {
   const { userName, email, password } = req.body;
-  const user = await User.findOne({ email: email });
   if (user) {
-    errors.push({ msg: 'Email already exists' });
     res.render('register', {
       errors,
       userName,
